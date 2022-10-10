@@ -42,7 +42,11 @@ class HomePage extends StatelessWidget {
                         // color: Colors.black87,
                         fontSize: 20,
                       ),),
-                    style: ButtonStyle(),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      )
+                    ),
                   ),
                 ),
               ),
@@ -64,7 +68,11 @@ class HomePage extends StatelessWidget {
                         // color: Colors.black87,
                         fontSize: 20,
                       ),),
-                    style: ButtonStyle(),
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        )
+                    ),
                   ),
                 ),
               ),
@@ -86,7 +94,11 @@ class HomePage extends StatelessWidget {
                         // color: Colors.black87,
                         fontSize: 20,
                       ),),
-                    style: ButtonStyle(),
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        )
+                    ),
                   ),
                 ),
               ),
