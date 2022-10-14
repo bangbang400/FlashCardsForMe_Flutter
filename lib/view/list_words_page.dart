@@ -14,6 +14,7 @@ class _ListWordsPageState extends State<ListWordsPage> {
   List<Words> wordsList = []; // all data
   bool isLoading = false; // save table state
 
+  // state(状態) initState()はウィジェットツリーの初期化
   @override
   void initState() {
     super.initState();
@@ -41,6 +42,7 @@ class _ListWordsPageState extends State<ListWordsPage> {
             final word = wordsList[index];
             return Card(
               child: InkWell(
+                // Inkwellとはウィジェットに対してsplash(タッチエフェクト)を表示したいとき
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Row(

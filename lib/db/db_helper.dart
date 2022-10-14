@@ -36,6 +36,7 @@ class DbHelper {
   // Open database
   Future<Database> _initDB() async {
     String path = join(await getDatabasesPath(),'words_database.db');
+    print(path);
     return await openDatabase(
       path,
       version: 1,
@@ -65,4 +66,33 @@ class DbHelper {
     // parse data to List
     return wordsData.map((json) => Words.fromJson(json)).toList();
   }
+
+  // insert
+  Future insert(Words words) async {
+    final db = await database;
+    return await db.insert(
+        'word',
+        words.toJson());
+  }
+
+  // update
+ Future update(Words words) async {
+    final db = await database;
+    return await db.update(
+        'words',
+        words.toJson(),
+    where: '_id = ?',
+    whereArgs: [words.id],
+    );
+ }
+
+ // delete
+ Future delete(int id) async {
+    final db = await instance.database;
+    return await db.delete(
+      'words',
+      where: '_id = ?',
+      whereArgs: [id],
+    );
+ }
 }

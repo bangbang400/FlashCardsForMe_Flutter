@@ -7,8 +7,8 @@ class Words{
   String commentary;
   int? correct;
   int? wrong;
-  int? createdAt;
-  int? modifiedAt;
+  DateTime createdAt;
+  DateTime modifiedAt;
 
   Words({
     this.id,
@@ -26,12 +26,15 @@ class Words{
     commentary: json[columnCommentary]as String,
     correct: json[columnCorrect]as int,
     wrong: json[columnWrong]as int,
-    createdAt: json[columnCreatedAt]as int,
-    modifiedAt: json[columnModifiedAt]as int,
+    createdAt: DateTime.parse(json[columnCreatedAt]as String),
+    modifiedAt: DateTime.parse(json[columnModifiedAt]as String),
   );
 
   Map<String, Object> toJson() => {
     columnWord: word,
     columnCommentary: commentary,
+    columnCorrect:correct as String,
+    columnCorrect:wrong as String,
+    // columnCreatedAt: DateFormat('').format(createdAt),
   };
 }
