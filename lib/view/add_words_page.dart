@@ -35,18 +35,50 @@ class _AddWordsPageState extends State<AddWordsPage> {
         title: Text('単語を追加'),
       ),
       body: Container(
-        child: ElevatedButton(
-          onPressed: (){
-            // DB追加処理を実行
-            addWord;
-          },
-          child: Text(
-            'DB追加',
-            style: TextStyle(
-                fontSize: 10
+        child: Column(
+          children: [
+            // 単語入力フォーム
+            Padding(padding: EdgeInsets.all(20),),
+            Container(
+              // margin: EdgeInsets.all(20),
+              // padding: EdgeInsets.all(20),
+              width: double.infinity,
+              color: Colors.grey,
+              child: TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: '半角30文字、全角60文字以内',
+                ),
+                autofocus: true, // オートフォーカス
+              ),
             ),
-          ),
-          style: ButtonStyle(),
+            Padding(padding: EdgeInsets.all(5),),
+            // 単語の解説入力フォーム
+            Container(
+              // margin: EdgeInsets.all(10),
+              width: double.infinity,
+              color: Colors.grey,
+              child: TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: '半角30文字、全角60文字以内',
+                ),
+                autofocus: true, // オートフォーカス
+              ),
+            ),
+            Padding(padding: EdgeInsets.all(5),),
+            ElevatedButton(
+              onPressed: (){
+                // DB追加処理を実行
+                addWord;
+                },
+              child: Text(
+                'DB追加',
+                style: TextStyle(fontSize: 10),
+              ),
+              style:
+            ),
+          ],
         ),
       ),
     );
