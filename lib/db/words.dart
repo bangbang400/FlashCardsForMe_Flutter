@@ -1,5 +1,6 @@
 import 'package:flash_cards_for_me/db/db_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Words{
   int? id;
@@ -34,7 +35,8 @@ class Words{
     columnWord: word,
     columnCommentary: commentary,
     columnCorrect:correct as String,
-    columnCorrect:wrong as String,
-    // columnCreatedAt: DateFormat('').format(createdAt),
+    columnWrong:wrong as String,
+    columnCreatedAt: DateFormat('yyyy-MM-dd HH:mm:ss').format(createdAt),
+    columnModifiedAt: DateFormat('yyyy-MM-dd HH:mm:ss').format(modifiedAt),
   };
 }

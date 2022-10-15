@@ -50,6 +50,7 @@ class _AddWordsPageState extends State<AddWordsPage> {
                   hintText: '半角30文字、全角60文字以内',
                 ),
                 autofocus: true, // オートフォーカス
+                onChanged: (word) => setState(() => this.word = word),
               ),
             ),
             Padding(padding: EdgeInsets.all(5),),
@@ -76,7 +77,7 @@ class _AddWordsPageState extends State<AddWordsPage> {
                 'DB追加',
                 style: TextStyle(fontSize: 10),
               ),
-              style:
+              style:ButtonStyle(),
             ),
           ],
         ),
