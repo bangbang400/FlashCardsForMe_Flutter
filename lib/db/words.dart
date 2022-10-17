@@ -34,8 +34,8 @@ class Words{
   Map<String, Object> toJson() => {
     columnWord: word,
     columnCommentary: commentary,
-    columnCorrect:correct as String,
-    columnWrong:wrong as String,
+    columnCorrect:correct as int,
+    columnWrong:wrong as int,
     columnCreatedAt: DateFormat('yyyy-MM-dd HH:mm:ss').format(createdAt),
     columnModifiedAt: DateFormat('yyyy-MM-dd HH:mm:ss').format(modifiedAt),
   };

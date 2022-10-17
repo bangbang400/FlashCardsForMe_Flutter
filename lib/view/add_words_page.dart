@@ -65,13 +65,14 @@ class _AddWordsPageState extends State<AddWordsPage> {
                   hintText: '半角30文字、全角60文字以内',
                 ),
                 autofocus: true, // オートフォーカス
+                onChanged: (commentary) => setState(() => this.commentary = commentary),
               ),
             ),
             Padding(padding: EdgeInsets.all(5),),
             ElevatedButton(
               onPressed: (){
                 // DB追加処理を実行
-                addWord;
+                addWord();
                 },
               child: Text(
                 'DB追加',
@@ -94,8 +95,8 @@ class _AddWordsPageState extends State<AddWordsPage> {
     final wordData = Words(
         word: word,
         commentary: commentary,
-        correct: null,
-        wrong: null,
+        correct: 0,
+        wrong: 0,
         createdAt: createdAt,
         modifiedAt: modifiedAt,
     );

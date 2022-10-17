@@ -45,16 +45,18 @@ class DbHelper {
   }
 
   // When the db does not exist
+  // DBが存在しない場合、onCreateする
   Future _onCreate(Database db, int version) async{
+    print('yb:DBが存在しない');
         await db.execute(
   '''CREATE TABLE words(
-                id INTEGER PRIMARY KEY,
+                _id INTEGER PRIMARY KEY AUTOINCREMENT,
                 word TEXT,
                 commentary TEXT,
                 correct INTEGER,
                 wrong INTEGER,
-                createdAt INTEGER,
-                modifiedAt INTEGER
+                createdAt TEXT,
+                modifiedAt TEXT
                 )'''
         );
   }
@@ -71,7 +73,7 @@ class DbHelper {
   Future insert(Words words) async {
     final db = await database;
     return await db.insert(
-        'word',
+        'words',
         words.toJson());
   }
 
