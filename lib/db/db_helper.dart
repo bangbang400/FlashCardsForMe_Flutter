@@ -69,6 +69,19 @@ class DbHelper {
     return wordsData.map((json) => Words.fromJson(json)).toList();
   }
 
+  // get 1 data
+  Future<Words> wordData(int id) async {
+    final db = await instance.database;
+    var word = [];
+    word = await db.query(
+      'words',
+      columns: columns,
+      where: '_id = ?',
+      whereArgs: [id],
+    );
+    return Words.fromJson(word.first);
+  }
+
   // insert
   Future insert(Words words) async {
     final db = await database;
