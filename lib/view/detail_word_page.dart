@@ -33,6 +33,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
   Future wordsData() async {
     setState(() => isLoading = true);
     words = await DbHelper.instance.wordData(widget.id);
+    setState(() => isLoading = false);
     print(widget.id);
   }
 
@@ -40,7 +41,9 @@ class _DetailWordPageState extends State<DetailWordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ここに単語名'),
+        title: isLoading ? const Center(
+          child: CircularProgressIndicator(),
+        ) : Text(words.word ?? '単語詳細'),
       ),
       body: Container(
 
