@@ -45,9 +45,10 @@ class _AddWordsPageState extends State<AddWordsPage> {
               width: double.infinity,
               color: Colors.grey,
               child: TextField(
+                maxLength: 10,
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: '半角30文字、全角60文字以内',
+                  hintText: '10文字以内',
                 ),
                 autofocus: true, // オートフォーカス
                 onChanged: (word) => setState(() => this.word = word),
@@ -60,9 +61,10 @@ class _AddWordsPageState extends State<AddWordsPage> {
               width: double.infinity,
               color: Colors.grey,
               child: TextField(
+                maxLength: 60,
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: '半角30文字、全角60文字以内',
+                  hintText: '60文字以内',
                 ),
                 autofocus: true, // オートフォーカス
                 onChanged: (commentary) => setState(() => this.commentary = commentary),

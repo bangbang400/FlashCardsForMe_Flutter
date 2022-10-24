@@ -19,6 +19,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
   late Words words;
   bool isLoading = false;
   double screenHeight = 0; // 画面の高さ
+  double screenWidth = 0; // 画面の横幅
 
   @override
   void initState() {
@@ -39,6 +40,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
   @override
   Widget build(BuildContext context) {
     screenHeight = MediaQuery.of(context).size.height;
+    screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
           title: isLoading
@@ -56,31 +58,36 @@ class _DetailWordPageState extends State<DetailWordPage> {
           // margin: EdgeInsets.all(10.0),
           // alignment: Alignment.topCenter,
           // alignment: const Alignment(5, 5),
-          height: screenHeight/2,
-          color: Colors.red,
+          // height: screenHeight/2,
+          // width: screenWidth,
+          // color: Colors.red,
           child: Row(
             // mainAxisAlignment:Rowの場合、横方向の中央
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Column(
-                children: [
-                  // 単語
-                  isLoading ? const Center(
-                    child: CircularProgressIndicator(),
-                  ) :
-                  Text(
-                    words.word ?? '読み込みエラー',
-                    style: TextStyle(fontSize: 40),
-                  ),
-                  // 単語の説明
-                  isLoading ? const Center(
-                    child: CircularProgressIndicator(),
-                  ) :
-                  Text(
-                    words.commentary ?? '読み込みエラー',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ],
+              Container(
+                padding: const EdgeInsets.all(50.0),
+                color: Colors.red,
+                child: Column(
+                  children: [
+                    // 単語
+                    isLoading ? const Center(
+                      child: CircularProgressIndicator(),
+                    ) :
+                    Text(
+                      words.word ?? '読み込みエラー',
+                      style: TextStyle(fontSize: 40),
+                    ),
+                    // 単語の説明
+                    isLoading ? const Center(
+                      child: CircularProgressIndicator(),
+                    ) :
+                    Text(
+                      words.commentary ?? '読み込みエラー',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
               ),
 
             ],
