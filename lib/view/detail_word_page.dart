@@ -18,6 +18,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
   // Null safety有効化時のUnitTestでNon-nullable
   late Words words;
   bool isLoading = false;
+  double screenHeight = 0; // 画面の高さ
 
   @override
   void initState() {
@@ -37,6 +38,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
 
   @override
   Widget build(BuildContext context) {
+    screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
           title: isLoading
@@ -51,9 +53,11 @@ class _DetailWordPageState extends State<DetailWordPage> {
         // crossAxisAlignment:横方向
         body: Container(
           // padding: const EdgeInsets.all(15.0),//内部に余白ができる
-          margin: EdgeInsets.all(10.0),
+          // margin: EdgeInsets.all(10.0),
           // alignment: Alignment.topCenter,
           // alignment: const Alignment(5, 5),
+          height: screenHeight/2,
+          color: Colors.red,
           child: Row(
             // mainAxisAlignment:Rowの場合、横方向の中央
             mainAxisAlignment: MainAxisAlignment.center,
