@@ -1,7 +1,6 @@
 import 'package:flash_cards_for_me/db/db_helper.dart';
 import 'package:flash_cards_for_me/db/words.dart';
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
 
 class AddWordsPage extends StatefulWidget {
   final Words? words;
