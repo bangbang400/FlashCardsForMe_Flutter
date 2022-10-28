@@ -21,6 +21,11 @@ class _AddWordsPageState extends State<AddWordsPage> {
   double screenHeight = 0; // 画面の高さ
   double screenWidth = 0; // 画面の横幅
 
+  bool result = false;
+
+  var wordController = TextEditingController();
+  var commentaryController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -36,6 +41,7 @@ class _AddWordsPageState extends State<AddWordsPage> {
   Widget build(BuildContext context) {
     screenHeight = MediaQuery.of(context).size.height;
     screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('単語を追加'),
@@ -56,6 +62,7 @@ class _AddWordsPageState extends State<AddWordsPage> {
               child: SizedBox(
                 width: double.infinity,
                 child: TextField(
+                  controller: wordController,
                   maxLength: 10,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -77,11 +84,11 @@ class _AddWordsPageState extends State<AddWordsPage> {
               child: SizedBox(
                 width: double.infinity,
                 child: TextField(
+                  controller: commentaryController,
                   maxLength: 60,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30)
-                    ),
+                        borderRadius: BorderRadius.circular(30)),
                     hintText: '解説：60文字以内',
                   ),
                   autofocus: true, // オートフォーカス
@@ -96,18 +103,21 @@ class _AddWordsPageState extends State<AddWordsPage> {
             ElevatedButton(
               onPressed: () {
                 // DB追加処理を実行
-                addWord();
+                if(word != '' || commentary != ''){
+                  // 単語と解説どちらもNullでなければ登録処理を実行する
+                  addWord();
+                }else{
+                  showAlertValidationError();
+                }
               },
               child: Text(
-                '単語追加',
+                '単語登録',
                 style: TextStyle(fontSize: 20),
               ),
               style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)
-                ),
-                fixedSize: Size(screenWidth * 0.7, 50)
-              ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  fixedSize: Size(screenWidth * 0.7, 50)),
             ),
           ],
         ),
@@ -120,6 +130,53 @@ class _AddWordsPageState extends State<AddWordsPage> {
     await addWordProcess();
   }
 
+  // 単語を登録したときにステータスを表示するアラート
+  void showAlert() async {
+    String message = '';
+    result ? message = '単語を１件登録しました。' : message = '単語の登録に失敗しました。';
+
+    if(result){
+      wordController.clear();
+      commentaryController.clear();
+    }
+
+    showDialog(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          title: Text('単語登録'),
+          content: Text(message),
+          actions: <Widget>[
+            FloatingActionButton(
+              child: Text('OK'),
+              onPressed: () => Navigator.pop(context),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  // 単語を登録したときにステータスを表示するアラート
+  void showAlertValidationError() async {
+    String message = '単語と解説を入力してください。';
+    showDialog(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          title: Text('入力エラー'),
+          content: Text(message),
+          actions: <Widget>[
+            FloatingActionButton(
+              child: Text('OK'),
+              onPressed: () => Navigator.pop(context),
+            )
+          ],
+        );
+      },
+    );
+  }
+
   Future addWordProcess() async {
     final wordData = Words(
       word: word,
@@ -129,6 +186,7 @@ class _AddWordsPageState extends State<AddWordsPage> {
       createdAt: createdAt,
       modifiedAt: modifiedAt,
     );
-    await DbHelper.instance.insert(wordData);
+    result = await DbHelper.instance.insert(wordData);
+    showAlert(); // アラートを表示する
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flash_cards_for_me/db/words.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -83,11 +85,12 @@ class DbHelper {
   }
 
   // insert
-  Future insert(Words words) async {
+  Future<bool> insert(Words words) async {
     final db = await database;
-    return await db.insert(
+    await db.insert(
         'words',
         words.toJson());
+    return true;
   }
 
   // update
