@@ -1,5 +1,6 @@
 import 'package:flash_cards_for_me/db/db_helper.dart';
 import 'package:flash_cards_for_me/db/words.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddWordsPage extends StatefulWidget {
@@ -103,7 +104,7 @@ class _AddWordsPageState extends State<AddWordsPage> {
             ElevatedButton(
               onPressed: () {
                 // DB追加処理を実行
-                if(word != '' || commentary != ''){
+                if(word != '' && commentary != ''){
                   // 単語と解説どちらもNullでなければ登録処理を実行する
                   addWord();
                 }else{
@@ -140,20 +141,38 @@ class _AddWordsPageState extends State<AddWordsPage> {
       commentaryController.clear();
     }
 
-    showDialog(
-      context: context,
-      builder: (_) {
-        return AlertDialog(
-          title: Text('単語登録'),
-          content: Text(message),
-          actions: <Widget>[
-            FloatingActionButton(
-              child: Text('OK'),
-              onPressed: () => Navigator.pop(context),
-            )
-          ],
-        );
-      },
+    // Android用ダイアログ
+    // showDialog(
+    //   context: context,
+    //   builder: (_) {
+    //     return AlertDialog(
+    //       title: Text('単語登録'),
+    //       content: Text(message),
+    //       actions: <Widget>[
+    //         FloatingActionButton(
+    //           child: Text('OK'),
+    //           onPressed: () => Navigator.pop(context),
+    //         )
+    //       ],
+    //     );
+    //   },
+    // );
+
+    // iOSっぽいダイアログ
+    showCupertinoDialog(
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: Text('単語登録'),
+            content: Text(message),
+            actions: [
+              CupertinoDialogAction(
+                  child: Text('閉じる'),
+                onPressed: () => Navigator.pop(context),
+              )
+            ],
+          );
+        },
     );
   }
 

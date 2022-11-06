@@ -63,6 +63,20 @@ class DbHelper {
         );
   }
 
+  // delete DB
+  Future<Database> resetDatabase() async {
+    // パス
+    var path = join(await getDatabasesPath(),'words_database.db');
+    await deleteDatabase(path);
+
+    return await openDatabase(
+      path,
+      version: 1,
+      onCreate: _onCreate,
+    );
+
+  }
+
   // get All
   Future<List<Words>> getAllWords() async {
     final db = await instance.database;
