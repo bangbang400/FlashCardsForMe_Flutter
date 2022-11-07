@@ -12,6 +12,7 @@ class DetailWordPage extends StatefulWidget {
 }
 
 class _DetailWordPageState extends State<DetailWordPage> {
+  // detailはウィジェットの置き方を修正する
   // late :
   // lateで宣言された変数が使用されないときは初期化されない
   // 変数宣言時のthisへのアクセス
