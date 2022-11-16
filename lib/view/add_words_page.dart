@@ -64,11 +64,11 @@ class _AddWordsPageState extends State<AddWordsPage> {
                 width: double.infinity,
                 child: TextField(
                   controller: wordController,
-                  maxLength: 10,
+                  maxLength: 20,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
-                    hintText: '単語：10文字以内',
+                    hintText: '単語：20文字以内',
                   ),
                   autofocus: true, // オートフォーカス
                   onChanged: (word) => setState(() => this.word = word),
@@ -79,6 +79,7 @@ class _AddWordsPageState extends State<AddWordsPage> {
             //   padding: EdgeInsets.all(5),
             // ),
             // 単語の解説入力フォーム
+            // 
             Container(
               margin: EdgeInsets.all(10),
               // color: Colors.yellow,
@@ -167,7 +168,7 @@ class _AddWordsPageState extends State<AddWordsPage> {
             content: Text(message),
             actions: [
               CupertinoDialogAction(
-                  child: Text('閉じる'),
+                  child: Text('OK'),
                 onPressed: () => Navigator.pop(context),
               )
             ],
