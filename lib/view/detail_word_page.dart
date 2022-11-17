@@ -109,7 +109,8 @@ class _DetailWordPageState extends State<DetailWordPage> {
                         alignment: Alignment(0.5, 0.8),
                         child: ElevatedButton(
                           onPressed: () {
-
+                            // ボタンを押下すると解説を表示させる
+                            // 同時に解説ボタンも非表示にする
                           },
                           child: Text(
                             '解説',
