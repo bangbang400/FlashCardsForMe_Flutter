@@ -16,3 +16,6 @@ We recommend using split view for the Android.<br>
 By opening another app on one side and this app on the other, for example, when you are watching a video with English subtitles and see a word you do not understand, you can register the word immediately.<br>
 The registered words can then be tested by memory test from the lesson to help you learn.
 </p>
+
+### やること
+・サーバーにDBのデータを保存する
