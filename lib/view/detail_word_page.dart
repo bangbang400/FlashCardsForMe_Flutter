@@ -22,6 +22,8 @@ class _DetailWordPageState extends State<DetailWordPage> {
   double screenHeight = 0; // 画面の高さ
   double screenWidth = 0; // 画面の横幅
 
+  bool _visible = true;
+
   @override
   void initState() {
     super.initState();
@@ -43,97 +45,112 @@ class _DetailWordPageState extends State<DetailWordPage> {
     screenHeight = MediaQuery.of(context).size.height;
     screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-        appBar: AppBar(
-          title: isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Text(words.word ?? '単語詳細'),
-        ),
-        // Row:横方向
-        // Column:縦方向
-        // mainAxisAlignment:縦方向
-        // crossAxisAlignment:横方向
-        // body: Container(
-        body: Container(
-          child: Card(
-            color: Colors.transparent,
-            elevation: 0,
-            // padding: const EdgeInsets.all(15.0),//内部に余白ができる
-            margin: EdgeInsets.all(20.0),
-            // alignment: Alignment.topCenter,
-            // alignment: const Alignment(5, 5),
-            // height: screenHeight/2,
-            // width: screenWidth,
-            // color: Colors.red,
-            child: Row(
-              // mainAxisAlignment:Rowの場合、横方向の中央
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: Column(
-                    children: [
-                      // 単語
-                      isLoading
-                          ? const Center(
-                              child: CircularProgressIndicator(),
-                            )
-                          : Container(
-                              alignment: Alignment.center,
-                              color: Colors.red,
-                              child: Text(
-                                words.word ?? '読み込みエラー',
-                                // style: TextStyle(fontSize: 40),
-                                style: TextStyle(fontSize: 40),
-                                // textAlign: TextAlign.center,
-                              ),
+      appBar: AppBar(
+        title: isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Text(words.word ?? '単語詳細'),
+      ),
+      // Row:横方向
+      // Column:縦方向
+      // mainAxisAlignment:縦方向
+      // crossAxisAlignment:横方向
+      // body: Container(
+      body: Container(
+        child: Card(
+          color: Colors.transparent,
+          elevation: 0,
+          // padding: const EdgeInsets.all(15.0),//内部に余白ができる
+          margin: EdgeInsets.all(20.0),
+          // alignment: Alignment.topCenter,
+          // alignment: const Alignment(5, 5),
+          // height: screenHeight/2,
+          // width: screenWidth,
+          // color: Colors.red,
+          child: Row(
+            // mainAxisAlignment:Rowの場合、横方向の中央
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Flexible(
+                child: Column(
+                  children: [
+                    // 単語
+                    isLoading
+                        ? const Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : Container(
+                            alignment: Alignment.center,
+                            color: Colors.red,
+                            child: Text(
+                              words.word ?? '読み込みエラー',
+                              // style: TextStyle(fontSize: 40),
+                              style: TextStyle(fontSize: 40),
+                              // textAlign: TextAlign.center,
                             ),
-                      Padding(
-                        padding: EdgeInsets.all(10),
+                          ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                    ),
+                    // 単語の解説
+                    Commentary(),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                    ),
+                    Container(
+                      alignment: Alignment(0.9, 0),
+                      child: Column(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              // ボタンを押下すると解説を表示させる
+                              // 同時に解説ボタンも非表示にする
+                              Visibility(
+                                visible: _visible,
+                                child: Commentary(),
+                              );
+                            },
+                            child: Text(
+                              '解説',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: Size(60, 60),
+                              shape: CircleBorder(
+                                  // side: BorderSide(
+                                  //   width: 1,
+                                  //   // style: BorderStyle.solid,
+                                  // ),
+                                  ),
+                            ),
+                          ),
+                        ],
                       ),
-                      // 単語の説明
-                      isLoading
-                          ? const Center(
-                              child: CircularProgressIndicator(),
-                            )
-                          : Container(
-                              alignment: Alignment.center,
-                              color: Colors.lightGreenAccent,
-                              child: Text(
-                                words.commentary ?? '読み込みエラー',
-                                // style: TextStyle(fontSize: 20),
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ),
-                      Container(
-                        alignment: Alignment(0.5, 0.8),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // ボタンを押下すると解説を表示させる
-                            // 同時に解説ボタンも非表示にする
-                          },
-                          child: Text(
-                            '解説',
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: Size(60, 60),
-                            shape: CircleBorder(
-                              // side: BorderSide(
-                              //   width: 1,
-                              //   // style: BorderStyle.solid,
-                              // ),
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
+      ),
     );
+  }
+
+   Commentary() {
+    isLoading
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : Container(
+            alignment: Alignment.center,
+            color: Colors.lightGreenAccent,
+            child: Text(
+              words.commentary ?? '読み込みエラー',
+              // style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20),
+            ),
+          );
   }
 }
