@@ -94,7 +94,19 @@ class _DetailWordPageState extends State<DetailWordPage> {
                       padding: EdgeInsets.all(10),
                     ),
                     // 単語の解説
-                    Commentary(),
+                    isLoading
+                        ? const Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : Container(
+                            alignment: Alignment.center,
+                            color: Colors.lightGreenAccent,
+                            child: Text(
+                              words.commentary ?? '読み込みエラー',
+                              // style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
                     Padding(
                       padding: EdgeInsets.all(10),
                     ),
@@ -106,10 +118,10 @@ class _DetailWordPageState extends State<DetailWordPage> {
                             onPressed: () {
                               // ボタンを押下すると解説を表示させる
                               // 同時に解説ボタンも非表示にする
-                              Visibility(
-                                visible: _visible,
-                                child: Commentary(),
-                              );
+                              // Visibility(
+                              //   visible: _visible,
+                              //   child:
+                              // );
                             },
                             child: Text(
                               '解説',
@@ -136,21 +148,5 @@ class _DetailWordPageState extends State<DetailWordPage> {
         ),
       ),
     );
-  }
-
-   Commentary() {
-    isLoading
-        ? const Center(
-            child: CircularProgressIndicator(),
-          )
-        : Container(
-            alignment: Alignment.center,
-            color: Colors.lightGreenAccent,
-            child: Text(
-              words.commentary ?? '読み込みエラー',
-              // style: TextStyle(fontSize: 20),
-              style: TextStyle(fontSize: 20),
-            ),
-          );
   }
 }
