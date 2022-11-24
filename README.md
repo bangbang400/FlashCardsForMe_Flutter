@@ -17,5 +17,6 @@ By opening another app on one side and this app on the other, for example, when 
 The registered words can then be tested by memory test from the lesson to help you learn.
 </p>
 
-### やること
+### これからやること(All We need to do now...)
 ・サーバーにDBのデータを保存する
+(Store DB data on the server.)
