@@ -22,7 +22,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
   double screenHeight = 0; // 画面の高さ
   double screenWidth = 0; // 画面の横幅
 
-  bool _visible = true;
+  bool commentary_visible = false;
 
   @override
   void initState() {
@@ -86,7 +86,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
                             : Container(
                                 width: screenWidth,
                                 height: screenHeight * 0.15,
-                                color: Colors.black12,
+                                color: Colors.black12,// debug用カラー
                                 child: Text(
                                   words.word ?? '読み込みエラー',
                                   // style: TextStyle(fontSize: 40),
@@ -94,7 +94,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
                                   // textAlign: TextAlign.center,
                                 ),
                               ),
-                        // 単語の解説
+                        // 解説
                         isLoading
                             ? const Center(
                                 child: CircularProgressIndicator(),
@@ -102,9 +102,9 @@ class _DetailWordPageState extends State<DetailWordPage> {
                             : Container(
                                 width: screenWidth,
                                 height: screenHeight * 0.4,
-                                color: Colors.black26,
+                                color: Colors.black26,// debug用カラー
                                 child: Text(
-                                  words.commentary ?? '読み込みエラー',
+                                  (commentary_visible)?words.commentary ?? '読み込みエラー':"",
                                   // style: TextStyle(fontSize: 20),
                                   style: TextStyle(fontSize: 20),
                                 ),
@@ -117,7 +117,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
             ),
           ),
           Container(
-            color: Colors.black26,
+            color: Colors.black26, // debug用カラー
             alignment: Alignment(0.8, 0),
             child: ElevatedButton(
               onPressed: () {
@@ -127,6 +127,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
                 //   visible: _visible,
                 //   child:
                 // );
+                commentary_visible = true;
               },
               child: Text(
                 '解説',
