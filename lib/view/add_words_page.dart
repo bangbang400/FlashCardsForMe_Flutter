@@ -62,13 +62,14 @@ class _AddWordsPageState extends State<AddWordsPage> {
               // color: Colors.yellow,
               child: SizedBox(
                 width: double.infinity,
+                // 単語のフィールドを100字以内に拡張する
                 child: TextField(
                   controller: wordController,
-                  maxLength: 20,
+                  maxLength: 100,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
-                    hintText: '単語：20文字以内',
+                    hintText: '単語：100文字以内',
                   ),
                   autofocus: true, // オートフォーカス
                   onChanged: (word) => setState(() => this.word = word),
@@ -87,11 +88,11 @@ class _AddWordsPageState extends State<AddWordsPage> {
                 width: double.infinity,
                 child: TextField(
                   controller: commentaryController,
-                  maxLength: 60,
+                  maxLength: 200,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
-                    hintText: '解説：60文字以内',
+                    hintText: '解説：200文字以内',
                   ),
                   autofocus: true, // オートフォーカス
                   onChanged: (commentary) =>

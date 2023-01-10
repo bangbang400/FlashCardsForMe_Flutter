@@ -86,7 +86,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
                             : Container(
                                 width: screenWidth,
                                 height: screenHeight * 0.15,
-                                color: Colors.black12,// debug用カラー
+                                // color: Colors.black12,// debug用カラー
                                 child: Text(
                                   words.word ?? '読み込みエラー',
                                   // style: TextStyle(fontSize: 40),
@@ -102,7 +102,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
                             : Container(
                                 width: screenWidth,
                                 height: screenHeight * 0.4,
-                                color: Colors.black26,// debug用カラー
+                                // color: Colors.black26,// debug用カラー
                                 child: Text(
                                   (commentary_visible)?words.commentary ?? '読み込みエラー':"",
                                   // style: TextStyle(fontSize: 20),
@@ -117,17 +117,21 @@ class _DetailWordPageState extends State<DetailWordPage> {
             ),
           ),
           Container(
-            color: Colors.black26, // debug用カラー
+            // color: Colors.black26, // debug用カラー
             alignment: Alignment(0.8, 0),
             child: ElevatedButton(
               onPressed: () {
                 // ボタンを押下すると解説を表示させる
                 // 同時に解説ボタンも非表示にする
                 // Visibility(
-                //   visible: _visible,
+                //   visible: commentary_visible,
                 //   child:
                 // );
                 commentary_visible = true;
+                // setState(() {}); 画面を再描画したいとき
+                setState(() {
+
+                });
               },
               child: Text(
                 '解説',
