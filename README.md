@@ -6,6 +6,21 @@
 You can summarize various words such as English words and hard-to-remember phrases. You can test your memory of the words you have compiled, just like a vocabulary book, and you can review the words you have made mistakes on the test.
 </p>
 
+<img src="https://user-images.githubusercontent.com/58414435/177770106-68bb13e6-2c40-4002-a3c1-c0d3273ac659.png" height="10%" width="10%">
+<p>アイコン写真はAndroidアプリとして、リリースした時のものです。<br>(The icon photo was taken at the time of release as an Android application.)</p>
+
+### スクリーンショット(Screen shot)
+<table>
+<tr>
+<td><img src="https://user-images.githubusercontent.com/58414435/177770117-115e6880-8e51-4dee-94b2-978b4f4ec8cc.jpeg"></td>
+<td><img src="https://user-images.githubusercontent.com/58414435/177770123-cab0629f-3c42-4bc8-a858-4fdeffd177af.jpeg"></td>
+<td><img src="https://user-images.githubusercontent.com/58414435/177770135-7e155c89-a252-4a22-b16a-56adca1dbcb1.jpeg"></td>
+<td><img src="https://user-images.githubusercontent.com/58414435/177770265-2798c997-14c7-491c-bf7b-3f1df6677550.jpeg"></td>
+<td><img src="https://user-images.githubusercontent.com/58414435/177770268-1f92f29b-799e-47f2-af2d-b3c5559bfe91.jpeg"></td>
+</tr>
+</table>
+<p>写真はAndroidアプリとして、リリースした時のものです。<br>(The photo was taken at the time of release as an Android application.)</p>
+
 ### 使い方・便利な点(Usage and Convenience)
 <p>Android版はスプリットビューを使用することを推奨します。<br>
 片方に別のアプリ、もう片方で本アプリを開くことで例えば英語字幕の動画を見ている時にわからない単語が出てきたらすぐに単語登録することができます。<br>
