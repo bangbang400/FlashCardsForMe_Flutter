@@ -4,7 +4,6 @@ import '../db/words.dart';
 
 class DetailWordPage extends StatefulWidget {
   final int id;
-
   const DetailWordPage({Key? key, required this.id}) : super(key: key);
 
   @override
@@ -18,11 +17,11 @@ class _DetailWordPageState extends State<DetailWordPage> {
   // 変数宣言時のthisへのアクセス
   // Null safety有効化時のUnitTestでNon-nullable
   late Words words;
-  bool isLoading = false;
+  bool isLoading = false; // DBの値を読み込む時のステータス
   double screenHeight = 0; // 画面の高さ
   double screenWidth = 0; // 画面の横幅
-
-  bool commentary_visible = false;
+  bool commentaryVisible = false; // 解説の表示非表示切り替え
+  double answerButtonHeight = 60; // 回答ボタンの高さ
 
   @override
   void initState() {
@@ -46,17 +45,12 @@ class _DetailWordPageState extends State<DetailWordPage> {
     screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: isLoading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : Text(words.word ?? '単語詳細'),
+        // title: Text('単語詳細'),
       ),
       // Row:横方向
       // Column:縦方向
       // mainAxisAlignment:縦方向
       // crossAxisAlignment:横方向
-      // body: Container(
       body: Column(
         children: [
           Container(
@@ -65,11 +59,6 @@ class _DetailWordPageState extends State<DetailWordPage> {
               elevation: 0,
               // padding: const EdgeInsets.all(15.0),//内部に余白ができる
               margin: EdgeInsets.all(20.0),
-              // alignment: Alignment.topCenter,
-              // alignment: const Alignment(5, 5),
-              // height: screenHeight/2,
-              // width: screenWidth,
-              // color: Colors.red,
               child: Row(
                 // mainAxisAlignment:Rowの場合、横方向の中央
                 // mainAxisAlignment: MainAxisAlignment.center,
@@ -104,7 +93,7 @@ class _DetailWordPageState extends State<DetailWordPage> {
                                 height: screenHeight * 0.4,
                                 // color: Colors.black26,// debug用カラー
                                 child: Text(
-                                  (commentary_visible)?words.commentary ?? '読み込みエラー':"",
+                                  (commentaryVisible)?words.commentary ?? '読み込みエラー':"",
                                   // style: TextStyle(fontSize: 20),
                                   style: TextStyle(fontSize: 20),
                                 ),
@@ -124,10 +113,10 @@ class _DetailWordPageState extends State<DetailWordPage> {
                 // ボタンを押下すると解説を表示させる
                 // 同時に解説ボタンも非表示にする
                 // Visibility(
-                //   visible: commentary_visible,
+                //   visible: commentaryVisible,
                 //   child:
                 // );
-                commentary_visible = true;
+                commentaryVisible = true;
                 // setState(() {}); 画面を再描画したいとき
                 setState(() {
 
@@ -148,6 +137,30 @@ class _DetailWordPageState extends State<DetailWordPage> {
               ),
             ),
           ),
+          Padding(
+            padding: EdgeInsets.all(10),
+          ),
+          Row(
+            children:[
+            ElevatedButton(
+              onPressed: () {
+
+              },
+              child: Text('知らない'),
+              style: ElevatedButton.styleFrom(
+                fixedSize: Size(screenWidth / 2, answerButtonHeight),
+              ),
+            ),
+              ElevatedButton(
+                onPressed: () {
+                },
+                child: Text('知ってる'),
+                style: ElevatedButton.styleFrom(
+                  fixedSize: Size(screenWidth / 2, answerButtonHeight),
+                ),
+              ),
+            ]
+          )
         ],
       ),
     );

@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class Words{
-  int? id;
-  String word;
-  String commentary;
-  int? correct;
-  int? wrong;
-  DateTime createdAt;
-  DateTime modifiedAt;
+  int? id; // id
+  String word; // 単語
+  String commentary; // 解説
+  int? correct; // 正答数
+  int? wrong; // 誤答数
+  DateTime createdAt; // データ作成日
+  DateTime modifiedAt; // データ更新日
 
   Words({
     this.id,
