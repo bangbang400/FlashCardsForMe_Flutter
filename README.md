@@ -1,4 +1,4 @@
-# Flashcards for me
+# Flashcards for me(iOS版を開発中:Developing iOS version)
 ### アプリ概要(Application Overview)
 <p>Flashcards for meは、記憶したい単語をアプリ内に記録して暗記テストもできるシンプルな無料の単語帳アプリです。<br>
 英単語や覚えにくい熟語など様々な単語をまとめることができます。まとめた単語は単語帳のように記憶力テストをすることができ、テストの出題形式はランダム出題、間違えた単語については復習することができます。</p>
